@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="zh-CNs">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"koahe.xyz","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="计算机网络引言部分的整理与复习。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第一章 引言">
+<meta property="og:url" content="http://koahe.xyz/2020/05/01/Chapter01/index.html">
+<meta property="og:site_name" content="枝叶">
+<meta property="og:description" content="计算机网络引言部分的整理与复习。">
+<meta property="og:image" content="http://koahe.xyz/.xyz//05.png">
+<meta property="og:image" content="http://koahe.xyz/.xyz//02.png">
+<meta property="og:image" content="http://koahe.xyz/.xyz//01.png">
+<meta property="og:image" content="http://koahe.xyz/.xyz//03.png">
+<meta property="og:image" content="http://koahe.xyz/.xyz//04.png">
+<meta property="og:image" content="http://koahe.xyz/.xyz//06.png">
+<meta property="og:image" content="http://koahe.xyz/.xyz//07.png">
+<meta property="og:image" content="http://koahe.xyz/.xyz//08.png">
+<meta property="og:image" content="http://koahe.xyz/.xyz//09.png">
+<meta property="og:image" content="http://koahe.xyz/.xyz//10.png">
+<meta property="og:image" content="http://koahe.xyz/.xyz//11.png">
+<meta property="og:image" content="http://koahe.xyz/.xyz//12.png">
+<meta property="og:image" content="http://koahe.xyz/.xyz//13.png">
+<meta property="article:published_time" content="2020-04-30T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-05-01T19:15:24.134Z">
+<meta property="article:author" content="北枝">
+<meta property="article:tag" content="整理">
+<meta property="article:tag" content="基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://koahe.xyz/.xyz//05.png">
+
+<link rel="canonical" href="http://koahe.xyz/2020/05/01/Chapter01/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CNs'
+  };
+</script>
+
+  <title>第一章 引言 | 枝叶</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+
+
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">枝叶</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">极北之地，冰雪覆枝。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>معلومات</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>الوسوم<span class="badge">2</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>التصنيفات<span class="badge">1</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>الأرشيفات<span class="badge">2</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>بحث
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="بحث..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CNs">
+    <link itemprop="mainEntityOfPage" href="http://koahe.xyz/2020/05/01/Chapter01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/author.jpg">
+      <meta itemprop="name" content="Author">
+      <meta itemprop="description" content="愿你每天都会被美梦惊醒。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="枝叶">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          第一章 引言
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">نُشر في</span>
+
+              <time title="أُنشأ: 2020-05-01 00:00:00" itemprop="dateCreated datePublished" datetime="2020-05-01T00:00:00+08:00">2020-05-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">عُدل في</span>
+                <time title="عُدل: 2020-05-02 03:15:24" itemprop="dateModified" datetime="2020-05-02T03:15:24+08:00">2020-05-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">في</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">计算机网络引言部分的整理与复习。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><ol>
+<li>虚拟专用网（VPN，Virtual Private Networks）：将不同地点的单个网络联结成一个拓展的网络。试图终结“地理位置的束缚”。</li>
+<li>客户机-服务器模型：客户机——网络——服务器。是许多网络应用的基础，实现之一：Web应用</li>
+<li>对等通信（peer to peer）：原则上，每个人都可与一个或多个其他人通信，客户端和服务器没具体分工。</li>
+<li>RFC(Request For Comments)：请求注释。英特网草案、建议标准、草案标准、因特网标准</li>
+<li>ISO（International Standards Organization）：国际标准化组织。后面会有一个OSI模型。</li>
+<li>路由算法：网络如何决定使用哪条路径的策略。</li>
+<li>转发算法：每个路由器如何决定把一个数据包发送到哪个位置的策略。</li>
+<li>一组相互连接的网络称为<strong>互联网络（interbetwork）</strong>或<strong>互联网（internet）</strong>。首字母大写为<strong>因特网（Internet）</strong>（这是一种特殊的互联网络），使用ISP网络连接各种各样的网络。</li>
+</ol>
+<h2 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h2><ul>
+<li>定义：大量相互独立但彼此连接的计算机共同完成计算任务。</li>
+<li>如果两台计算机能够相互交换信息，则称两台计算机是相互连接的。网络可以有不同的大小、形状和形式。这些网络通常连接在一起组成更大的网络，<strong>Internet就是著名的网络中的网络。</strong></li>
+<li>IP（Internet协议）/TCP（传输控制协议）协议的核心技术的公开最终导致了Internet的大发展。</li>
+<li>度量单位: B表示字节（bytes）（8比特），b表示bit。<ul>
+<li>KB、MB、GB、TB:2^10、2^20、2^30、2^40字节</li>
+<li>kbps、Mbps、Gbps、Tbps：10^3、10^6、10^9、10^12位/秒</li>
+<li><h3 id="三级结构"><a href="#三级结构" class="headerlink" title="三级结构"></a>三级结构</h3><blockquote>
+<p>以主机为中心—&gt;以分组交换网为中心<br><img src="/.xyz//05.png" alt="三级结构"></p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>广域网</li>
+<li>城域网</li>
+<li>局域网</li>
+</ul>
+<h3 id="多层次结构"><a href="#多层次结构" class="headerlink" title="多层次结构"></a>多层次结构</h3><ul>
+<li><img src="/.xyz//02.png" alt="多层次结构"></li>
+<li><img src="/.xyz//01.png" alt="A与B通信"></li>
+<li><img src="/.xyz//03.png" alt="多层次结构"></li>
+<li><strong>通信子网：（内层）</strong>主要由通信设备和通信线路机器软件组成；负责全网的数据传输、加工和变换等通信处理操作。</li>
+<li><strong>资源子网：（外层）</strong>主要由主机、终端、附属设备及软件组成；负责全网数据处理和向网络用户提供资源及网络服务。</li>
+</ul>
+<h3 id="以网络互连为中心Internet"><a href="#以网络互连为中心Internet" class="headerlink" title="以网络互连为中心Internet"></a>以网络互连为中心Internet</h3><ul>
+<li><img src="/.xyz//04.png" alt="网络互连"></li>
+</ul>
+<h3 id="计算机网络与分布式系统"><a href="#计算机网络与分布式系统" class="headerlink" title="计算机网络与分布式系统"></a>计算机网络与分布式系统</h3><pre><code>两者的关键差别：</code></pre><ul>
+<li>由一组独立的计算机组成的分布式系统呈现给用户的是一个关联的系统。一般来说，在用户看来，分布式系统只是一个模型或泛型。通常在操作系统上有一层<strong>软件（称为中间件）</strong>负责实现这个模型。最著名的分布式系统例子是<strong>万维网（World Wide Web）</strong>，万维网运行在Internet上，所有的一切表现得像个文档（web页面）</li>
+<li>在计算机网络中，机器有不同的硬件或不同的操作系统，这些差异用户是可见的。在远程运行程序必须登录远程。</li>
+<li>实际上，<strong>分布式系统是建立在网络之上的软件系统</strong>，因此，网络与分布式系统之间的区别在于软件（特别是操作系统），而不是硬件。</li>
+</ul>
+<h3 id="局域网（-LAN，Local-Area-Network）"><a href="#局域网（-LAN，Local-Area-Network）" class="headerlink" title="局域网（    LAN，Local Area Network）"></a>局域网（    LAN，Local Area Network）</h3><ul>
+<li>接入点（AP，Access Point）、无线路由器（wireless router）：负责中继无限计算机之间的数据包，还负责中继无限计算机和Internet之间的数据包。</li>
+<li>无线局域网：一个标准：IEEE 802.11 俗称WIFI.</li>
+<li>有线局域网：大多使用铜线作为传输介质，也有光纤。<ul>
+<li><strong>以太网</strong>（Ethernet）：<strong>IEEE 802.3</strong></li>
+<li>交换式以太网：<strong>交换机</strong>的<strong>端口</strong>连接计算机，中继与之连接的计算机之间的数据包，根据其中的地址确定发送方。</li>
+</ul>
+</li>
+<li>虚拟局域网（VLAN,Virtual Local Area Network）</li>
+</ul>
+<h3 id="城域网（MAN-Metropolitan-Area-Network）"><a href="#城域网（MAN-Metropolitan-Area-Network）" class="headerlink" title="城域网（MAN,Metropolitan Area Network）"></a>城域网（MAN,Metropolitan Area Network）</h3><ul>
+<li>典型：有线电视网</li>
+<li><strong>WiMAX</strong>，标准化为 <strong>IEEE 802.16</strong></li>
+</ul>
+<h3 id="广域网（WAN-Wide-Area-Network）"><a href="#广域网（WAN-Wide-Area-Network）" class="headerlink" title="广域网（WAN, Wide Area Network）"></a>广域网（WAN, Wide Area Network）</h3><p>处理用户程序的计算机称为<strong>主机（host）</strong>，主机的网络其余部分称为<strong>通信子网（communication subnet）</strong>简称<strong>子网</strong>。子网把信息从一个主机携带到另一个主机。</p>
+<ul>
+<li><p>子网组成：传输线路和交换元素。<strong>传输线路</strong>负责在机器间移动比特，可以使铜线、光纤、无线链路。<strong>交换元素</strong>即<strong>交换机（switch）</strong>是专用的计算机，负责连接两条或两条以上的传输路线。负责交换的计算机现在常被成为<strong>路由器（router）</strong></p>
+</li>
+<li><p><strong>两种不同类型的广域网</strong></p>
+<ol>
+<li>不使用专用的传输线路，直接将主机连接到Internet。此为：<strong>虚拟专用网（VPN，virtual private network）</strong>。<br><img src="/.xyz//06.png" alt="某公司VPN"></li>
+<li>第二种的子网由不同的公司负责运营（网络服务提供商nsp）。主机是他的客户。与其他的网络中用户通信要求子网运营商与Internet的其他网络连接。这样的子网运营商称为<strong>Internet服务提供商（ISP）</strong>,相应的子网称为<strong>ISP网络</strong><blockquote>
+<p>“子网”，通常在广域网的上下文才有意义，它指网络运营商所拥有的一组路由器和通信线路。<br><img src="/.xyz//07.png" alt="ISP"></p>
+</blockquote>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="广域网和局域网的区别"><a href="#广域网和局域网的区别" class="headerlink" title="广域网和局域网的区别"></a>广域网和局域网的区别</h3><p>广域网看起来类似一个大型的有线局域网。实际上有很大差别</p>
+<ol>
+<li>广域网的主机和子网通常由不同的人拥有和经营。通常子网由网络供应商或者电话公司负责经营。</li>
+<li>路由器通常连接不同类型的网络技术。公司内部网络可能是以太网，而长途传输线路可能是SONET链路，需要一个设备将他们结合在一起，这便超出了网络的定义。这意味着许多广域网实际上是<strong>互联网络（internetwork）</strong>，或者符合网络，及由多个网络组成的网络。</li>
+<li>最后一个差异在于子网连接什么。</li>
+</ol>
+<h2 id="网络硬件"><a href="#网络硬件" class="headerlink" title="网络硬件"></a>网络硬件</h2><ul>
+<li>点到点（point to point）传输，只有一个发送方和一个接收方，也被称为<strong>单播</strong>。</li>
+<li><strong>广播</strong>：在一个广播网络上，通信信道被网络上所有的机器共享：任何一台机器发出的数据包能被所有其他的机器收到。有些广播支持给一组机器发送数据包，称为组播。<h3 id="协议层次结构"><a href="#协议层次结构" class="headerlink" title="协议层次结构"></a>协议层次结构</h3></li>
+<li>为降低网络设计的复杂度，绝大多数网络都组织成一个<strong>层次栈（a stack of layer）</strong>或<strong>分级栈（a stack of level）</strong>，每一层都建立在其下面一层的基础上。</li>
+<li>一台机器上的第n层与另一台主机上的第n层通话中使用的规则和约定统称为第n层协议。所谓<strong>协议（protocol）</strong>是指通信双方就如何进行通信的一种约定。</li>
+<li>不同机器上构成相应层次的实体称为<strong>对等体（peer）</strong>，可以使软件过程、硬件设备甚至是人类。</li>
+<li>第一层给下面是<strong>物理介质</strong>，通过他进行实际的通信。</li>
+<li>在每一对相邻层次之间的是<strong>接口</strong>。其定义了下层向上层提供哪些原语操作和服务。</li>
+<li>层和协议的集合称为网络体系结构（network architecture）。</li>
+<li>一个特定的系统所使用的一组协议，即每一层一个协议，称为协议栈（protocol stack）<br><img src="/.xyz//08.png" alt="层次、协议和接口"></li>
+<li>在许多网络中，对于第四层上传递的消息大小没有任何限制，但是几乎所有第三层协议对此总会强加一个限制。因此，第三层必须把入境消息分割成较小的单元，及<strong>数据包or包</strong>。</li>
+</ul>
+<h3 id="面向连接与无连接服务"><a href="#面向连接与无连接服务" class="headerlink" title="面向连接与无连接服务"></a>面向连接与无连接服务</h3><ul>
+<li>面向连接的服务是按照电话系统建模的。必须先建立一个连接，然后使用该连接传输数据，最后释放连接。</li>
+<li>无连接服务是按照邮政系统建模的。每个报文（信件）都携带了完整的目标地址，每个报文都由系统中的中间节点路由，而且路由独立于后续报文。处理方式有<strong>储存-转发交换</strong>、<strong>直通式交换</strong>。一个完整时向下一个传输，一个未完整便传输。<ul>
+<li>请求应答服务：发送方传输一个包含请求的数据报，接收方以一个包含请求结果的应答数据包作为反馈。</li>
+<li><img src="/.xyz//09.png" alt="六种服务"><h3 id="服务原语"><a href="#服务原语" class="headerlink" title="服务原语"></a>服务原语</h3>一个服务有一组原语正式说明，用户进程通过这些原语（操作）来访问该服务。<br><img src="/.xyz//10.png" alt="服务原语"></li>
+</ul>
+</li>
+</ul>
+<h3 id="服务和协议的关系"><a href="#服务和协议的关系" class="headerlink" title="服务和协议的关系"></a>服务和协议的关系</h3><p><strong>服务</strong>是指某一曾向他的上一层提供一组原语（操作）。服务定义了该层准备代表用户执行哪些操作，但并不涉及如何实现这些操作。服务涉及层与层之间的接口。底层为服务提供者，上层是服务用户。</p>
+<p><strong>协议</strong>是一组规则，规定了同一层上对等实体之间所交换的数据包或者报文的格式和含义。对等实体利用协议来实现他们的服务定义，可自由的该改变协议，只要不改变呈现给用户的服务即可。</p>
+<h2 id="参考模型"><a href="#参考模型" class="headerlink" title="参考模型"></a>参考模型</h2><h3 id="OSI参考模型"><a href="#OSI参考模型" class="headerlink" title="OSI参考模型"></a>OSI参考模型</h3><p><img src="/.xyz//11.png" alt="OSI"><br>&lt; 由低到高：</p>
+<ul>
+<li><strong><em>物理层</em></strong>：关注在一条通信信道上纯属原始比特。</li>
+<li><strong><em>数据链路层</em></strong>：将一个原始的传输设施变成一条没有楼间传输错误的线路。将真实的错误掩盖起来。使得网络层看不到。发送方将输入的数据拆分成<strong>数据帧</strong>，然后顺序发送。如果服务可靠，接收方必须确认正确收到的每一帧，给发送方返回一个<strong>确认帧</strong>。</li>
+<li><strong><em>网络层</em></strong>：控制子网的运行。关键的设计问题是如何将数据包从原端路由到接收方。</li>
+<li><strong><em>传输层</em></strong>：接收来自上一层的数据，必要时将这些数据分割成小单元，传递给网络层，斌确保这些单元正确的到达另一端。还决定了向会话层，因而是实际的最终网络用户提供哪种类型的服务。传输层是真正的端到端的层，他自始至终将数据从源端携带到接收方。</li>
+<li><strong><em>会话层</em></strong>：语序不同机器上的用户建立会话。通常提供各种服务，包括<strong>对话控制</strong>（记录该由谁来传递数据）、<strong>令牌管理</strong>（禁止双方同时执行同一个关键操作）以及<strong>同步功能</strong>（在一个长传输过程中设置一些断点，一边在系统崩溃之后还能恢复到崩溃前的状态继续运行）。</li>
+<li><strong><em>表示层</em></strong>：关注所传的信息的语法和语义。不同的计算机可能有不同的内部数据表示法，为了让他们能够通信，所交换的数据结构必须以一种抽象的方式来定义。</li>
+<li><strong><em>应用层</em></strong>：包含了用户通常需要的各种各样的协议。广发的应用协议：<strong>超文本传输协议（HTTP）</strong>，是万维网（WWW）的基础。<h3 id="TCP-IP参考模型"><a href="#TCP-IP参考模型" class="headerlink" title="TCP/IP参考模型"></a>TCP/IP参考模型</h3>&lt; 由低到高：</li>
+<li>链路层</li>
+<li>互联网层</li>
+<li>传输层：<br>两个传输协议：<ol>
+<li>传输控制协议（TCP），可靠、面向连接。</li>
+<li>用户数据包协议（UDP)，不可靠、无连接。</li>
+</ol>
+</li>
+<li>应用层</li>
+<li><img src="/.xyz//12.png" alt="TCP/IP模型"></li>
+</ul>
+<h3 id="混合模型"><a href="#混合模型" class="headerlink" title="混合模型"></a>混合模型</h3><ul>
+<li>5 应用层</li>
+<li>4 传输层</li>
+<li>3 网络层：</li>
+<li>2 数据链路岑层</li>
+<li>1 物理层</li>
+<li><img src="/.xyz//13.png" alt="混合模型"></li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>粗略的讲，网络可分为LAN（局）、MAN（城）、WAN（广）和互联网络。</li>
+<li>网络软件由网络协议祖成，而协议是进程通信必须遵守的规则。大多数网络支持协议的层次结构，每一层向它的上公层提供服务，同时屏蔽掉较低层使用的协议细节。</li>
+<li>协议栈通常基于OSI模型或者TCP/IP模型。这两个模型都有数据链路层、网络层、传输层和应用层，但它们在其他层不同。</li>
+<li>设计问题包括可靠性、资源分配、规模增长、信息安全等。</li>
+<li>网络为它们的用户提供不同的服务。服务的范围从无连接的尽力而为数据包传递服务到面向连接的有质量保证服务。在某些网络中，无连接服务由某一层提供，而面向连接的服务则由它上面的层提供。</li>
+<li>著名的网络包括_Internet、3G移动电话网络和802.11无线LAN_。<strong>Internet。__</strong>ARPANET__演变而来，那时其他网络纷纷加入到ARPANET中，从而构成了一个互联网。现在的Internet实际上是成千上万个都采用TCP/IP协议栈的网络集合。</li>
+<li><em>3G移动电话网络</em> 为无线并且移动的用户提供了多个Mbps量级的Internet接入服务，当然也能承载语音通信。</li>
+<li><em>无线LAN</em> 基于<strong>IEEE802.11</strong>标准，大多数都部署在家庭和咖啡馆，这种网络提供了速超过100Mbps的连通性。</li>
+<li>_嵌入式传感器网络和基于RFID技术的网络_。</li>
+<li>为了使多台计算机可相互之间通信，需要大量的标准化工作，不管是硬件方面还是软件方面。诸如ITU-T、ISO、IEEE和IAB这样的组织负责管理标准化进程的各个不同部分。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+	  
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B4%E7%90%86/" rel="tag"># 整理</a>
+              <a href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag"># 基础</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/18/hello-world/" rel="prev" title="Hello World">
+      <i class="fa fa-chevron-left"></i> Hello World
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          المحتويات
+        </li>
+        <li class="sidebar-nav-overview">
+          عام
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tips"><span class="nav-number">1.</span> <span class="nav-text">Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机网络"><span class="nav-number">2.</span> <span class="nav-text">计算机网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三级结构"><span class="nav-number">2.1.</span> <span class="nav-text">三级结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多层次结构"><span class="nav-number">2.2.</span> <span class="nav-text">多层次结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以网络互连为中心Internet"><span class="nav-number">2.3.</span> <span class="nav-text">以网络互连为中心Internet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机网络与分布式系统"><span class="nav-number">2.4.</span> <span class="nav-text">计算机网络与分布式系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#局域网（-LAN，Local-Area-Network）"><span class="nav-number">2.5.</span> <span class="nav-text">局域网（    LAN，Local Area Network）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#城域网（MAN-Metropolitan-Area-Network）"><span class="nav-number">2.6.</span> <span class="nav-text">城域网（MAN,Metropolitan Area Network）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#广域网（WAN-Wide-Area-Network）"><span class="nav-number">2.7.</span> <span class="nav-text">广域网（WAN, Wide Area Network）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#广域网和局域网的区别"><span class="nav-number">2.8.</span> <span class="nav-text">广域网和局域网的区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络硬件"><span class="nav-number">3.</span> <span class="nav-text">网络硬件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#协议层次结构"><span class="nav-number">3.1.</span> <span class="nav-text">协议层次结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面向连接与无连接服务"><span class="nav-number">3.2.</span> <span class="nav-text">面向连接与无连接服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务原语"><span class="nav-number">3.3.</span> <span class="nav-text">服务原语</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务和协议的关系"><span class="nav-number">3.4.</span> <span class="nav-text">服务和协议的关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考模型"><span class="nav-number">4.</span> <span class="nav-text">参考模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#OSI参考模型"><span class="nav-number">4.1.</span> <span class="nav-text">OSI参考模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-IP参考模型"><span class="nav-number">4.2.</span> <span class="nav-text">TCP&#x2F;IP参考模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#混合模型"><span class="nav-number">4.3.</span> <span class="nav-text">混合模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Author"
+      src="/images/author.jpg">
+  <p class="site-author-name" itemprop="name">Author</p>
+  <div class="site-description" itemprop="description">愿你每天都会被美梦惊醒。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">المقالات</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">التصنيفات</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">الوسوم</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/iuning" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;iuning" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/peanutvone@gmail.com" title="E-Mail → peanutvone@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Author</span>
+</div>
+  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+
+<!--fireworks-->
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/love.js"></script>
+
+</html>
