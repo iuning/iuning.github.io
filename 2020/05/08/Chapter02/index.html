@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"koahe.xyz","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="计算机网络物理层的整理与复习。其中重点为码分多址，香农、尼奎斯特定理。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第二章 物理层">
+<meta property="og:url" content="http://koahe.xyz/2020/05/08/Chapter02/index.html">
+<meta property="og:site_name" content="木叶">
+<meta property="og:description" content="计算机网络物理层的整理与复习。其中重点为码分多址，香农、尼奎斯特定理。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://koahe.xyz/2020/05/08/Chapter02/02.png">
+<meta property="og:image" content="http://koahe.xyz/2020/05/08/Chapter02/03.png">
+<meta property="og:image" content="http://koahe.xyz/2020/05/08/Chapter02/04.png">
+<meta property="og:image" content="http://koahe.xyz/2020/05/08/Chapter02/05.png">
+<meta property="og:image" content="http://koahe.xyz/2020/05/08/Chapter02/06.png">
+<meta property="og:image" content="http://koahe.xyz/2020/05/08/Chapter02/01.png">
+<meta property="og:image" content="http://koahe.xyz/2020/05/08/Chapter02/07.png">
+<meta property="og:image" content="http://koahe.xyz/2020/05/08/Chapter02/08.png">
+<meta property="og:image" content="http://koahe.xyz/2020/05/08/Chapter02/09.png">
+<meta property="og:image" content="http://koahe.xyz/2020/05/08/Chapter02/10.png">
+<meta property="og:image" content="http://koahe.xyz/2020/05/08/Chapter02/11.png">
+<meta property="og:image" content="http://koahe.xyz/2020/05/08/Chapter02/12.png">
+<meta property="og:image" content="http://koahe.xyz/2020/05/08/Chapter02/14.png">
+<meta property="og:image" content="http://koahe.xyz/2020/05/08/Chapter02/13.png">
+<meta property="og:image" content="http://koahe.xyz/2020/05/08/Chapter02/15.png">
+<meta property="og:image" content="http://koahe.xyz/2020/05/08/Chapter02/16.png">
+<meta property="og:image" content="http://koahe.xyz/2020/05/08/Chapter02/17.png">
+<meta property="og:image" content="http://koahe.xyz/2020/05/08/Chapter02/19.png">
+<meta property="og:image" content="http://koahe.xyz/2020/05/08/Chapter02/18.png">
+<meta property="article:published_time" content="2020-05-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-05-07T16:00:00.000Z">
+<meta property="article:author" content="北枝">
+<meta property="article:tag" content="尼奎斯特定理">
+<meta property="article:tag" content="香农定理">
+<meta property="article:tag" content="频分复用（FDM）">
+<meta property="article:tag" content="时分复用（TDM）">
+<meta property="article:tag" content="码分多址（CDMA）">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://koahe.xyz/2020/05/08/Chapter02/02.png">
+
+<link rel="canonical" href="http://koahe.xyz/2020/05/08/Chapter02/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>第二章 物理层 | 木叶</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="木叶" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">木叶</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">极北之地，冰雪覆枝。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://koahe.xyz/2020/05/08/Chapter02/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/author.jpg">
+      <meta itemprop="name" content="北枝">
+      <meta itemprop="description" content="既然目标是地平线，留给世界的只能是背影。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木叶">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          第二章 物理层
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-08 00:00:00" itemprop="dateCreated datePublished" datetime="2020-05-08T00:00:00+08:00">2020-05-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">计算机网络物理层的整理与复习。其中重点为码分多址，香农、尼奎斯特定理。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="物理层的基本概念"><a href="#物理层的基本概念" class="headerlink" title="物理层的基本概念"></a>物理层的基本概念</h2><ul>
+<li>是OSI的第一层，是整个开放系统的基础。为设备之间的数据通信提供传输媒体和互联设备，为数据传输提供可靠的环境。<strong>屏蔽物理层所采用的传输介质、通信设备与通信技术的差异性</strong>，使数据链路层只需考虑如何使用物理层的服务。<br><img src="/2020/05/08/Chapter02/02.png" alt="传输演示"><blockquote>
+<ol>
+<li>为数据端设备提供传送数据的<strong>通路</strong>。</li>
+<li>传输数据。形成适合数据传输所需的实体，为数据传送服务。</li>
+<li>完成物理层的管理工作</li>
+<li>数据传输单位是比特（bit）</li>
+</ol>
+</blockquote>
+</li>
+<li>物理层的主要任务描述为确定与传输媒体的接口的一些特性：<ul>
+<li>机械特性</li>
+<li>电气特性</li>
+<li>功能特性</li>
+<li>过程特性</li>
+</ul>
+</li>
+</ul>
+<h2 id="数据通信的理论基础"><a href="#数据通信的理论基础" class="headerlink" title="数据通信的理论基础"></a>数据通信的理论基础</h2><h3 id="数据通信系统"><a href="#数据通信系统" class="headerlink" title="数据通信系统"></a>数据通信系统</h3><p>计算机网络是计算机技术和数据通信技术相结合的产物，其中数据通信系统的组成包括：</p>
+<ul>
+<li><strong>信    源</strong>：产生要发送数据的设备。</li>
+<li><strong>发送设备</strong>：对数据进行编码的设备。</li>
+<li><strong>传输系统</strong>：传输线路或网络。</li>
+<li><strong>接收设备</strong>：讲接受的信号变成数据。</li>
+<li><strong>信    宿</strong>：目的系统。<br><img src="/2020/05/08/Chapter02/03.png" alt="数据通信系统"><br><img src="/2020/05/08/Chapter02/04.png" alt="数通"></li>
+</ul>
+<h3 id="模拟信号"><a href="#模拟信号" class="headerlink" title="模拟信号"></a>模拟信号</h3><h4 id="简单模拟信号"><a href="#简单模拟信号" class="headerlink" title="简单模拟信号"></a>简单模拟信号</h4><p>正弦波信号：<br><img src="/2020/05/08/Chapter02/05.png" alt="简模"></p>
+<h4 id="复杂模拟信号"><a href="#复杂模拟信号" class="headerlink" title="复杂模拟信号"></a>复杂模拟信号</h4><p>可分解为多个正弦波叠加：<br><img src="/2020/05/08/Chapter02/06.png" alt="数通"></p>
+<h4 id="傅里叶分析"><a href="#傅里叶分析" class="headerlink" title="傅里叶分析"></a>傅里叶分析</h4><p>傅里叶证明了：任何一个行为合理周期为T的函数g(t),都可以表示成用正弦函数和余弦函数表示的无穷级数。任何一个模拟数据信号都可以通过<strong>多次谐波</strong>（多个正弦或余弦波的叠加）表示出来。</p>
+<blockquote>
+<p><img src="/2020/05/08/Chapter02/01.png" alt="无穷级数"></p>
+</blockquote>
+<h4 id="基带和通带信号"><a href="#基带和通带信号" class="headerlink" title="基带和通带信号"></a>基带和通带信号</h4><ul>
+<li>_基带信号_（基本频带信号）：来自信源的信号。计算机输出的代表各种文字或图像文件的数据信号都属于。</li>
+<li>_通带信号_：把基带信号经过载波调制后，把信号频率搬移到较高的频段以便于在信道中传输（即仅在一段频率范围内能够通过信道）。</li>
+<li>基本的二元制调制方法：<ul>
+<li><strong>调幅</strong>（AM）：载波的振幅随基带<strong>数字信号</strong>而变化。</li>
+<li><strong>调频</strong>（FM）：载波的频率随基带<strong>数字信号</strong>而变化。</li>
+<li><strong>调相</strong>（PM）：载波的初始相位随基带数字信号而变化。</li>
+<li><img src="/2020/05/08/Chapter02/07.png" alt="dalal"></li>
+</ul>
+</li>
+</ul>
+<h3 id="数字信号"><a href="#数字信号" class="headerlink" title="数字信号"></a>数字信号</h3><pre><code>离散的、值的变化是瞬时发生的信号。</code></pre><p><img src="/2020/05/08/Chapter02/08.png" alt="数字信号"></p>
+<ul>
+<li><strong>比特间隙</strong>：发送一比特所用时间。</li>
+<li><strong>比特率</strong>：每秒钟发送的比特数。单位是bps。</li>
+<li><strong>有效带宽</strong>：数字信号是由多个频率信号的叠加而成，如果只传输有重要振幅分量的频率信号，而输出端能以合理的精度恢复信号，则这个上限频率就是有效带宽。</li>
+<li><strong>介质带宽</strong>：传输介质只能传输某些频率范围内的信号。</li>
+<li><strong>信道容量</strong>：传输介质可以传输的最大比特率，依赖编码技术。</li>
+</ul>
+<h4 id="信道的极限容量"><a href="#信道的极限容量" class="headerlink" title="信道的极限容量"></a>信道的极限容量</h4><p>任何实际的信道都不是理想的，在传输信号时会发生各种失真以激发i来多种干扰。<br>传输的速率越高，或信号传输的距离越远，在信道输出端的波形的失真越严重。<br><img src="/2020/05/08/Chapter02/09.png" alt="信道失真"></p>
+<h4 id="尼奎斯特准则"><a href="#尼奎斯特准则" class="headerlink" title="尼奎斯特准则"></a>尼奎斯特准则</h4><p>无噪声（理论状况）情况下码元速率与信道带宽的关系：     </p>
+<blockquote>
+<p><strong>H=2*B</strong><br>其中，B是信道带宽；与数据传输率的关系:<br><strong>C=2<em>B</em>log<sub>2</sub>V</strong><br>C是最大数据速率。V表示，信号包含了V个离散等级（题中可能表述为每个码元可能取V个值）。</p>
+</blockquote>
+<h4 id="香农定理"><a href="#香农定理" class="headerlink" title="香农定理"></a>香农定理</h4><p>对于一条带宽为B Hz、噪声比是S/N的有噪声信道，其最大数据速率或者容量为：</p>
+<blockquote>
+<p>最大比特率=B log<sub>2</sub>(1+S/N)<br>S表示信号功率，N表示噪声功率。为适用于很大的范围，<strong>信噪比表示成对数形式 10log<sub>10</sub>S/N,对数的取值单位为分贝（dB）。</strong>10的信噪比为10分贝，100的信噪比为20分贝。</p>
+</blockquote>
+<h3 id="（引导性和非引导性）传输介质"><a href="#（引导性和非引导性）传输介质" class="headerlink" title="（引导性和非引导性）传输介质"></a>（引导性和非引导性）传输介质</h3><ul>
+<li>有线介质：<ul>
+<li>双绞线：</li>
+<li><img src="/2020/05/08/Chapter02/10.png" alt="双绞线"><ul>
+<li>568A: 绿白绿橙白蓝，蓝白橙棕白棕</li>
+<li>568B: 橙白橙绿白蓝，蓝白绿棕白棕</li>
+</ul>
+</li>
+<li>同轴电缆：50Ω、70Ω</li>
+<li>光纤：纤芯、包层、保护层。不断地全反射。多模近失真，单模长好贵。</li>
+<li>······</li>
+</ul>
+</li>
+<li>无线介质：<ul>
+<li>卫星</li>
+<li>微波</li>
+<li>红外线</li>
+<li>······</li>
+</ul>
+<ul>
+<li>长波：传播衰减快，但是可以绕射；短波、微波：传播衰减慢，但是需要通视。</li>
+<li>对于有限的频谱来说，通信容易产生干扰<ul>
+<li>跳频扩频</li>
+<li>直接序列扩频</li>
+<li>超宽带扩频</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="数字调制与多路复用"><a href="#数字调制与多路复用" class="headerlink" title="数字调制与多路复用"></a>数字调制与多路复用</h2><pre><code>数字调制：比特与代表它们的信号之间的转换过程称为**数字调制**。信息用信号表示。</code></pre><ul>
+<li>数字比特如何直接转换成信号的一些方案，导致了所谓的<strong>基带传输</strong>，即信号的传输占有传输介质上从0到最大值之间的全部频率，而最大频率则取决于信令速率。</li>
+<li>信道被多个信号共享的形式称为多路复用技术。<h3 id="信息-gt-信号编码调制方式"><a href="#信息-gt-信号编码调制方式" class="headerlink" title="信息-&gt;信号编码调制方式"></a>信息-&gt;信号编码调制方式</h3><h4 id="数字信息-gt-数字信号调制"><a href="#数字信息-gt-数字信号调制" class="headerlink" title="数字信息-&gt;数字信号调制"></a>数字信息-&gt;数字信号调制</h4></li>
+</ul>
+<ol>
+<li>单极化编码<br> 电压是单极性。高电平表示1，低表示0.缺点：有直流电平，带宽要求高，无法同步（需依赖附加线）</li>
+<li>极化编码<br> 一正一负，减轻了单极性编码中的直流分量问题<ul>
+<li>非归零编码（NRZ）：可用光的存在表示1，不存在表示0.简单不常用。需要B/2的带宽。</li>
+<li>归零编码（RZ）：码元中间的信号回归到0电平,判断的方法是”从正电平到零电平的转换边表示的码元为0,而从负电平到零电平转换边表示码元1”,使得这种编码为自定时的编码。<ul>
+<li>单极性归零码即是以高电平和零电平分别表示二进制码1 和0，而且在发送码1 时高电平在整个码元期间T 只持续一段时间τ，其余时间返回零电平。</li>
+<li>双极性归零码是二进制码0 和1 分别对应于正和负电平的波形的编码，在每个码之间都有间隙产生。</li>
+</ul>
+</li>
+<li>双相位码：双相位编码中，信号在每比特间隙的中间发生改变但并不归零，而是转为相反的一极。各比特中间的跳变可用于同步。<ul>
+<li>曼切斯特编码：在每个比特间隙中间引入跳变来表示不同的比特和同步信息。负到正代表比特1，正到负表示0.需要两倍于NRZ编码的带宽。</li>
+<li>差分曼切斯特编码：比特间隙中间的跳变用于携带同步信息。<strong>每个比特间隙的开始位置</strong>有跳变表示0，没有为1.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="数字信息-gt-模拟信号调制"><a href="#数字信息-gt-模拟信号调制" class="headerlink" title="数字信息-&gt;模拟信号调制"></a>数字信息-&gt;模拟信号调制</h4><blockquote>
+<ol>
+<li><strong>比特率S</strong>：每秒所发送的比特数。单位：bit/s(bps)</li>
+<li><strong>波特率B</strong>：每秒发送的信号单元数。单位：波特（baud）</li>
+<li><strong>载波信号</strong>：发送设备产生一个高频信号作为基波来承载信息信号。基波极为载波信号。此过程为调制。</li>
+</ol>
+</blockquote>
+<ul>
+<li><strong>幅移键控（ASK）</strong>：不同幅度表示0和1.抗干扰较差。</li>
+<li><strong>频移键控（FSK）</strong>：两个或更多个不同的频率表示0、1，抗干扰比ASK好。</li>
+<li><strong>相位键控（PSK）</strong>：不同相位表示0、1.最简单的形式为。<ul>
+<li>在每个符号的周期中，把载波便宜0度或180度，此法也称为二进制相移键控（BPSK）。</li>
+<li>有效地利用信道带宽的一个更好方案是使用4个偏移，例如45°、135°、225°或315°，这样每个符号可传输2个比特信息。这个版本的调制方式称为<strong>正交相移鍵控</strong>(QPSK. Quadrature Phase Shift Keying)。</li>
+<li>PSK可以用更多的状态表示二进制位，是调制的主要技术。</li>
+</ul>
+</li>
+<li><strong>正交调幅（QAM）</strong>：ASK和PSK结合起来的编码方法。<br>  <img src="/2020/05/08/Chapter02/11.png" alt="QAM"><ul>
+<li>上图中，b共有16种组合，每个符号传输4比特（0000）；c有64种组合，每个符号传输6比特（000000）。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>波特率与比特率的关系为：</li>
+<li>S = B×log<sub>2</sub>N （ N：码元状态数）</li>
+<li>例如：</li>
+<li>两相调制(单个调制状态对应1个二进制位)的比特率等于波特率；</li>
+<li>四相调制(单个调制状态对应2个二进制位)的比特率为波特率的两倍；</li>
+<li>八相调制(单个调制状态对应3个二进制位)的比特率为波特率的三倍.</li>
+</ul>
+</blockquote>
+<h4 id="模拟信息-gt-数字信号调制（信号采样）"><a href="#模拟信息-gt-数字信号调制（信号采样）" class="headerlink" title="模拟信息-&gt;数字信号调制（信号采样）"></a>模拟信息-&gt;数字信号调制（信号采样）</h4><ul>
+<li>A/D数据采集，主要应用自动控制系统</li>
+<li>需要3个步骤:<ul>
+<li>①采样：将连续的模拟信号离散化</li>
+<li>②量化：离散的采样值用2进制位数量化</li>
+<li>③编码：对量化后的数据用2进制编码</li>
+</ul>
+</li>
+<li>采样定理（Shannon)：采样频率大于信号最高频率的2倍。</li>
+</ul>
+<h4 id="模拟信息-gt-模拟信号调制（信号采样）"><a href="#模拟信息-gt-模拟信号调制（信号采样）" class="headerlink" title="模拟信息-&gt;模拟信号调制（信号采样）"></a>模拟信息-&gt;模拟信号调制（信号采样）</h4><ul>
+<li>有线电视，电话系统等</li>
+<li>声音信号的频率范围：20HZ - 20KHZ</li>
+<li>视频信号主要能量集中在300HZ - 3000HZ 之间</li>
+</ul>
+<h3 id="线路配置"><a href="#线路配置" class="headerlink" title="线路配置"></a>线路配置</h3><p>指两个或两个以上的设备连接到线路的方式。 有两种线路配置方式： 点到点连接和多点连接</p>
+<ul>
+<li>传输模式：指比特流从一个设备传到另一个设备的方式。<ul>
+<li>单工，半双工，全双工</li>
+<li>串行传输，并行传输</li>
+<li>同步传输，异步传输</li>
+</ul>
+</li>
+</ul>
+<h3 id="多路复用"><a href="#多路复用" class="headerlink" title="多路复用"></a>多路复用</h3><h4 id="时分多路复用"><a href="#时分多路复用" class="headerlink" title="时分多路复用"></a>时分多路复用</h4><p>将时间划分为一段段的等长的时分复用帧。</p>
+<ul>
+<li>同步时分多路复用<br><img src="/2020/05/08/Chapter02/12.png" alt="FDM"></li>
+<li>异步时分多路复用<br><img src="/2020/05/08/Chapter02/14.png" alt="FDM"></li>
+<li>对比同步时分多路复用和异步时分多路复用<ol>
+<li>同步时分多路复用的帧是固定大小的，控制简单，实时性好。</li>
+<li>信道效率差。</li>
+<li>异步时分多路复用能提高系统的利用率，异步时分多路复用</li>
+<li>需要一些额外的代价：<br>  ①信息单元需附带地址信息<br>  ②复用器必须有一定的存储容量<br>  ③节点必须有管理队列的能力</li>
+</ol>
+</li>
+</ul>
+<h4 id="波分多路复用"><a href="#波分多路复用" class="headerlink" title="波分多路复用"></a>波分多路复用</h4><p>利用多个激光器在单条光纤上同时发送多束不同波长激光的技术。它在一定的带宽上将输入的光信号调制到特定的频率上，然后将调制后的信号复用到一根光纤上。<br><img src="/2020/05/08/Chapter02/13.png" alt="WDM"></p>
+<h4 id="码分多路复用CDMA"><a href="#码分多路复用CDMA" class="headerlink" title="码分多路复用CDMA"></a><strong>码分多路复用CDMA</strong></h4><p>通常称为码分多址，根据码型结构的不同来实现信号分割的多路复用。用户通过码型来区分。使用同一频率占用相同的带宽。使用特殊挑选的不同码型，彼此不会造成干扰。</p>
+<blockquote>
+<ul>
+<li>每一个比特时间划分为 m 个短的间隔，称为<strong>码片(chip)</strong>。</li>
+<li>每个站被指派一个唯一的 m bit 码片序列。<strong>各不相同且互相正交</strong></li>
+<li>如发送比特 1，则发送自己的 m bit 码片序列。</li>
+<li>如发送比特 0，则发送该码片序列的二进制反码。</li>
+<li>码分多路复用CDMA (Code-Division Multiple Access)：<br> 任何一个码片向量和该码片向量自己的规格化内积都是1 。<br> 一个码片向量和该码片反码的向量的规格化内积值是 –1.<br> <img src="/2020/05/08/Chapter02/15.png" alt="CDMA"><ul>
+<li>接受方必须预先知道特定站的码片序列，计算收到的码片序列与该站的码片序列的归一化（规格化）内积，就可以恢复出该站的比特流。如果收到的码片序列为S，接收方正在监听的那个站的码片序列为C,则该站的比特流为S·C（逐个分量求乘积结果累加除以m。<br><img src="/2020/05/08/Chapter02/16.png" alt="CDMA"><br><img src="/2020/05/08/Chapter02/17.png" alt="CDMA"></li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="数字传输系统"><a href="#数字传输系统" class="headerlink" title="数字传输系统"></a>数字传输系统</h3><p>物理层的网络设备有：中继器和集线器。</p>
+<ul>
+<li>使用中继器连接网络，要求所连接的局域网具有相同的物理层和媒体访问控制协议，中继器重新产生信号，因此就可以扩展局域网所覆盖的地理范围。</li>
+<li>集线器就是有多个分路的中继器（或简易中继器）</li>
+<li>脉码调制 PCM 体制：最初是为了在电话局之间的中继线上传送多路的电话。由于历史上的原因，PCM 有两个互不兼容的国际标准，即北美的 24 路 PCM（简称为 T1）和欧洲的30 路 PCM（简称为 E1）。我国采用的是欧洲的 E1 标准。E1 的速率是 2.048 Mb/s，而 T1 的速率是 1.544 Mb/s。当需要有更高的数据率时，可采用复用的方法。</li>
+<li>旧的数字传输系统存在两方面的主要缺陷：<ul>
+<li>速率标准不统一：如果不对高次群的数字传输速率进行标准化，国际范围的高速数据传输就很难实现。</li>
+<li>不是同步传输：在过去相当长的时间，为了节约经费，各国的数字网主要是采用准同步方式。</li>
+</ul>
+</li>
+<li>同步光纤网SONET：同步光纤网 SONET (Synchronous Optical Network) 的各级时钟都来自一个非常精确的主时钟。第1级同步传送信号 STS-1 (Synchronous Transport Signal)的传输速率是 51.84 Mb/s。光信号则称为第1级光载波OC-1，OC表示Optical Carrier。<br><img src="/2020/05/08/Chapter02/19.png" alt="SONET"></li>
+<li>同步数字系列SDH：一般可认为 SDH 与 SONET 是同义词。SDH 的基本速率为 155.52 Mb/s，称为第 1 级同步传递模块 (Synchronous Transfer Module)，即 STM-1，相当于SONET 体系中的 OC-3 速率。</li>
+<li><img src="/2020/05/08/Chapter02/18.png" alt="sonetsdh"></li>
+</ul>
+<h3 id="宽带接入技术"><a href="#宽带接入技术" class="headerlink" title="宽带接入技术"></a>宽带接入技术</h3><ul>
+<li><p>xDSL技术是用数字技术对现有的模拟电话用户线进行改造，使它能够承载宽带数字业务。技术就把 0~4 kHz 低端频谱留给传统电话使用，而把原来没有被利用的高端频谱留给用户上网使用。</p>
+</li>
+<li><p>x的几种类型：</p>
+<ul>
+<li>ADSL (Asymmetric Digital Subscriber Line)：非对称数字用户线</li>
+<li>HDSL (High speed DSL)：高速数字用户线</li>
+<li>SDSL (Single-line DSL)：1 对线的数字用户线</li>
+<li>VDSL (Very high speed DSL)：甚高速数字用户线</li>
+<li>DSL ：ISDN 用户线。</li>
+<li>RADSL (Rate-Adaptive DSL)：速率自适应 DSL，是 ADSL 的一个子集，可自动调节线路速率）</li>
+</ul>
+</li>
+<li><p>ADSL 的特点：<br>  上行和下行带宽做成不对称的。<br>  上行指从用户到 ISP，而下行指从 ISP 到用户。<br>  ADSL 在用户线的两端各安装一个 ADSL 调制解调器。<br>  我国目前采用的方案是离散多音调 DMT (Discrete MultiTone)调制技术。这里的“多音调”就是“多载波”或“多子信道”的意思</p>
+</li>
+<li><p>第二代 ADSL：ADSL2（G.992.3/4）和ADSL2+（G.992.5）通过提高调制效率得到了更高的数据率。采用了无缝速率自适应技术 SRA (Seamless Rate Adaptation)，可在运营中不中断通信和不产生误码的情况下，自适应地调整数据率。改善了线路质量评测和故障定位功能，这对提高网络的运行维护水平具有非常重要的意义</p>
+</li>
+<li><p>DMT 调制技术采用频分复用的方法，把 40 kHz 以上一直到1.1 MHz 的高端频谱划分为许多的子信道，其中 25 个子信道用于上行信道，而 249 个子信道用于下行信道。每个子信道占据 4 kHz 带宽（严格讲是 4.3125 kHz），并使用不同的载波（即不同的音调）进行数字调制。这种做法相当于在一对用户线上使用许多小的调制解调器并行地传送数据。</p>
+</li>
+<li><p>光纤同轴混合网HFC (Hybrid Fiber Coax)：<br>  HFC 网是在目前覆盖面很广的有线电视网 CATV 的基础上开发的一种居民宽带接入网。主干线路采用光纤，使用模拟光纤技术。在模拟光纤中采用光的振幅调制 AM，这比使用数字光纤更为经济。<br>  模拟光纤从头端连接到光纤结点(fiber node)，即光分配结点 ODN (Optical Distribution Node)。在光纤结点光信号被转换为电信号。在光纤结点以下就是同轴电缆<br>  HFC 网除可传送 CATV 外，还提供电话、数据和其他宽带交互型业务。<br>  现有的 CATV 网是树形拓扑结构的同轴电缆网络，它采用模拟技术的频分复用对电视节目进行单向传输。而 HFC 网则需要对 CATV 网进行改造。</p>
+<ul>
+<li><strong>电缆调制解调器</strong>是为 HFC 网而使用的调制解调器。电缆调制解调器最大的特点就是传输速率高。其下行速率一般在 3 10 Mb/s之间，最高可达 30 Mb/s，而上行速率一般为 0.2 2 Mb/s，最高可达 10 Mb/s。电缆调制解调器比在普通电话线上使用的调制解调器要复杂得多，并且不是成对使用，而是只安装在用户端。</li>
+<li>用户接口盒 UIB (User Interface Box)要提供三种连接，即：<ul>
+<li>使用同轴电缆连接到机顶盒(set-top box)，然后再连接到用户的电视机。</li>
+<li>使用双绞线连接到用户的电话机。</li>
+<li>使用电缆调制解调器连接到用户的计算机。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>FTTx技术<br>光纤到家、大楼、路边。</p>
+</li>
+</ul>
+<h3 id="移动接入技术"><a href="#移动接入技术" class="headerlink" title="移动接入技术"></a>移动接入技术</h3><ul>
+<li>移动电话（蜂窝电话）系统<ul>
+<li>1G及2G网络最主要的分别是1G使用类比调制，而2G则是数字调制。由于调制方式的区别，1G网络只能传输模拟语音，而2G网络（GSM）已经具备传输数字信息的能力。</li>
+<li>3G网络（数字语音和数据），是指支持高速数据传输的蜂窝移动通讯技术。3G服务能够同时传送声音（通话）及数据信息（电子邮件、即时通信等）。四标准：CDMA2000，WCDMA，TD-SCDMA，WiMAX。</li>
+<li>4G网络：4G是第四代通讯技术的简称，4G系统能够以100Mbps的速度下载，上传的速度也能达到20Mbps，并能够满足几乎所有用户对于无线服务的要求。<blockquote>
+<p>2012.1.20 ITU正式审议通过的的4G（IMT-Advanced ）标准：LTE-Advanced：LTE(Long Term Evolution,长期演进)的后续研究标准；WirelessMAN-Advanced(802.16m)：WiMAX的后续研究标准。而TD-LTE作为LTE-Advanced标准分支之一入选；这是由我国主要提出的.<br>LTE(Long Term Evolution,长期演进)项目是3G的演进，它改进并增强了3G的空中接入技术，采用正交频分复用OFDM和多入多出MIMO作为其无线网络演进的唯一标准。</p>
+</blockquote>
+</li>
+<li>5G网络<br>标志性能力指标为“Gbps用户体验速率”，一组关键技术包括_大规模天线阵列、超密集组网、新型多址、全频谱接入和新型网络架构_等。大规模天线阵列是提升系统频谱效率的最重要技术手段之一，对满足5G系统容量和速率需求将起到重要的支撑作用；超密集组网通过增加基站部署密度，可实现百倍量级的容量提升，是满足5G千倍容量增长需求的最主要手段之一；新型多址技术通过发送信号的叠加传输来提升系统的接入能力，可有效支撑5G网络千亿设备连接需求；全频谱接入技术通过有效利用各类频谱资源，可有效缓解5G网络对频谱资源的巨大需求；新型网络架构基于SDN、NFV和云计算等先进技术可实现以用户为中心的更灵活、智能、高效和开放的5G新型网络</li>
+</ul>
+</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>物理层是所有网络的基础。</li>
+<li>传输介质可以是引导性的或非引导性的。</li>
+<li>数字调制方式可以通过引导性和非引导性介质上的模拟信号来发送比特。</li>
+<li>大多数广域网络的关键元素是电话系统。</li>
+<li>中继线传送数字信息。</li>
+<li>第一代1G是模拟的，由AMP主宰。第二代2G是数字化，目前在全球部署最广泛的移动电话系统是GSMo第三代3是数字的并且以宽带CDMA为基础，部署的有WCDMA和CDMA2000。</li>
+<li>另一种网络接入系统是有线电视系统。它己逐渐从同轴电缆演变为混合光纤同轴电缆,从单纯的电视演进为电视和Internet。它的潜在带宽很高，但实际带宽则主要取决于其他户，因为它是共享式的。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>北枝
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://koahe.xyz/2020/05/08/Chapter02/" title="第二章 物理层">http://koahe.xyz/2020/05/08/Chapter02/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%B0%BC%E5%A5%8E%E6%96%AF%E7%89%B9%E5%AE%9A%E7%90%86/" rel="tag"># 尼奎斯特定理</a>
+              <a href="/tags/%E9%A6%99%E5%86%9C%E5%AE%9A%E7%90%86/" rel="tag"># 香农定理</a>
+              <a href="/tags/%E9%A2%91%E5%88%86%E5%A4%8D%E7%94%A8%EF%BC%88FDM%EF%BC%89/" rel="tag"># 频分复用（FDM）</a>
+              <a href="/tags/%E6%97%B6%E5%88%86%E5%A4%8D%E7%94%A8%EF%BC%88TDM%EF%BC%89/" rel="tag"># 时分复用（TDM）</a>
+              <a href="/tags/%E7%A0%81%E5%88%86%E5%A4%9A%E5%9D%80%EF%BC%88CDMA%EF%BC%89/" rel="tag"># 码分多址（CDMA）</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/01/Chapter01/" rel="prev" title="第一章 引言">
+      <i class="fa fa-chevron-left"></i> 第一章 引言
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#物理层的基本概念"><span class="nav-number">1.</span> <span class="nav-text">物理层的基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据通信的理论基础"><span class="nav-number">2.</span> <span class="nav-text">数据通信的理论基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据通信系统"><span class="nav-number">2.1.</span> <span class="nav-text">数据通信系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模拟信号"><span class="nav-number">2.2.</span> <span class="nav-text">模拟信号</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简单模拟信号"><span class="nav-number">2.2.1.</span> <span class="nav-text">简单模拟信号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复杂模拟信号"><span class="nav-number">2.2.2.</span> <span class="nav-text">复杂模拟信号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#傅里叶分析"><span class="nav-number">2.2.3.</span> <span class="nav-text">傅里叶分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基带和通带信号"><span class="nav-number">2.2.4.</span> <span class="nav-text">基带和通带信号</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字信号"><span class="nav-number">2.3.</span> <span class="nav-text">数字信号</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#信道的极限容量"><span class="nav-number">2.3.1.</span> <span class="nav-text">信道的极限容量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#尼奎斯特准则"><span class="nav-number">2.3.2.</span> <span class="nav-text">尼奎斯特准则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#香农定理"><span class="nav-number">2.3.3.</span> <span class="nav-text">香农定理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（引导性和非引导性）传输介质"><span class="nav-number">2.4.</span> <span class="nav-text">（引导性和非引导性）传输介质</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数字调制与多路复用"><span class="nav-number">3.</span> <span class="nav-text">数字调制与多路复用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#信息-gt-信号编码调制方式"><span class="nav-number">3.1.</span> <span class="nav-text">信息-&gt;信号编码调制方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数字信息-gt-数字信号调制"><span class="nav-number">3.1.1.</span> <span class="nav-text">数字信息-&gt;数字信号调制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数字信息-gt-模拟信号调制"><span class="nav-number">3.1.2.</span> <span class="nav-text">数字信息-&gt;模拟信号调制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模拟信息-gt-数字信号调制（信号采样）"><span class="nav-number">3.1.3.</span> <span class="nav-text">模拟信息-&gt;数字信号调制（信号采样）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模拟信息-gt-模拟信号调制（信号采样）"><span class="nav-number">3.1.4.</span> <span class="nav-text">模拟信息-&gt;模拟信号调制（信号采样）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线路配置"><span class="nav-number">3.2.</span> <span class="nav-text">线路配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多路复用"><span class="nav-number">3.3.</span> <span class="nav-text">多路复用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#时分多路复用"><span class="nav-number">3.3.1.</span> <span class="nav-text">时分多路复用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#波分多路复用"><span class="nav-number">3.3.2.</span> <span class="nav-text">波分多路复用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#码分多路复用CDMA"><span class="nav-number">3.3.3.</span> <span class="nav-text">码分多路复用CDMA</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字传输系统"><span class="nav-number">3.4.</span> <span class="nav-text">数字传输系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#宽带接入技术"><span class="nav-number">3.5.</span> <span class="nav-text">宽带接入技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移动接入技术"><span class="nav-number">3.6.</span> <span class="nav-text">移动接入技术</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="北枝"
+      src="/images/author.jpg">
+  <p class="site-author-name" itemprop="name">北枝</p>
+  <div class="site-description" itemprop="description">既然目标是地平线，留给世界的只能是背影。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/iuning" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;iuning" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:peanutvone@gmail.com" title="E-Mail → mailto:peanutvone@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+	  <div>
+	     <!--网易云-->
+		<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1321760184&auto=1&height=66"></iframe>
+	  </div>
+
+    </div>
+	
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">北枝</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+	<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+</body>
+<!--fireworks-->
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/love.js"></script>
+</html>
