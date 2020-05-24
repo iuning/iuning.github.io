@@ -301,17 +301,17 @@
 </li>
 <li><strong>数据链路层传输的数据单元是帧(Frame)</strong>。</li>
 </ul>
-<h3 id="线路规划"><a href="#线路规划" class="headerlink" title="线路规划"></a>线路规划</h3><pre><code>是监视链路的建立，以及在给定时刻分配一个具体设备进行数据传输的权利。</code></pre><p>两种方式实现：</p>
+<h2 id="线路规划"><a href="#线路规划" class="headerlink" title="线路规划"></a>线路规划</h2><pre><code>是监视链路的建立，以及在给定时刻分配一个具体设备进行数据传输的权利。</code></pre><p>两种方式实现：</p>
 <ul>
 <li>询问/应答(ENQ/ACK)</li>
 <li>轮询(Poll)/选择(Select)方式:ENQ(询问帧)、ACK(确认帧)、NAK(否定应答帧)、EOT(传输结束帧)<br><img src="/2020/05/21/Chapter03/03.png" alt="帧"></li>
 </ul>
-<h3 id="数据链路层的简单模型"><a href="#数据链路层的简单模型" class="headerlink" title="数据链路层的简单模型"></a>数据链路层的简单模型</h3><h4 id="主机H1向主机H2发送数据：（红色从层次上看数据的流动，绿色仅从链路层观察帧流动）"><a href="#主机H1向主机H2发送数据：（红色从层次上看数据的流动，绿色仅从链路层观察帧流动）" class="headerlink" title="主机H1向主机H2发送数据：（红色从层次上看数据的流动，绿色仅从链路层观察帧流动）"></a>主机H1向主机H2发送数据：（红色从层次上看数据的流动，绿色仅从链路层观察帧流动）</h4><p><img src="/2020/05/21/Chapter03/04.png" alt="帧"></p>
-<h4 id="数据链路和帧："><a href="#数据链路和帧：" class="headerlink" title="数据链路和帧："></a>数据链路和帧：</h4><ul>
+<h2 id="数据链路层的简单模型"><a href="#数据链路层的简单模型" class="headerlink" title="数据链路层的简单模型"></a>数据链路层的简单模型</h2><h3 id="主机H1向主机H2发送数据：（红色从层次上看数据的流动，绿色仅从链路层观察帧流动）"><a href="#主机H1向主机H2发送数据：（红色从层次上看数据的流动，绿色仅从链路层观察帧流动）" class="headerlink" title="主机H1向主机H2发送数据：（红色从层次上看数据的流动，绿色仅从链路层观察帧流动）"></a>主机H1向主机H2发送数据：（红色从层次上看数据的流动，绿色仅从链路层观察帧流动）</h3><p><img src="/2020/05/21/Chapter03/04.png" alt="帧"></p>
+<h3 id="数据链路和帧："><a href="#数据链路和帧：" class="headerlink" title="数据链路和帧："></a>数据链路和帧：</h3><ul>
 <li><strong>链路（link）</strong>：是一条无源的点到点的物理线路段，中间没有其他的交换结点。</li>
 <li><strong>数据链路（data link）</strong>：除物理线路外，还必须有通信协议控制数据传输。将实现这些协议的硬件和软件加到链路上，就成了数据链路。<br><img src="/2020/05/21/Chapter03/05.png" alt="帧"></li>
 </ul>
-<h3 id="功能和服务"><a href="#功能和服务" class="headerlink" title="功能和服务"></a>功能和服务</h3><p>数据链路层使用物理层提供的服务在通信信道上发送和接收比特。他要完成一些功能：</p>
+<h2 id="功能和服务"><a href="#功能和服务" class="headerlink" title="功能和服务"></a>功能和服务</h2><p>数据链路层使用物理层提供的服务在通信信道上发送和接收比特。他要完成一些功能：</p>
 <ul>
 <li><p>向网络层提供一个定义良好的服务接口。</p>
 </li>
@@ -334,18 +334,18 @@
 </ul>
 </li>
 </ul>
-<h3 id="基本数据链路层协议"><a href="#基本数据链路层协议" class="headerlink" title="基本数据链路层协议"></a>基本数据链路层协议</h3><p>数据链路层使用的信道两种类型：</p>
+<h2 id="基本数据链路层协议"><a href="#基本数据链路层协议" class="headerlink" title="基本数据链路层协议"></a>基本数据链路层协议</h2><p>数据链路层使用的信道两种类型：</p>
 <ul>
 <li>点对点信道：一对一的</li>
 <li>广播信道：一对多的</li>
 </ul>
-<h4 id="点对点协议-PPP-Point-to-Point-Protocol"><a href="#点对点协议-PPP-Point-to-Point-Protocol" class="headerlink" title="点对点协议 PPP(Point-to-Point Protocol)"></a>点对点协议 PPP(Point-to-Point Protocol)</h4><p><img src="/2020/05/21/Chapter03/09.png" alt="PPP"><br>PPP协议不需要纠错、流量控制、序号、多点线路、半双工或单工链路.</p>
-<h5 id="PPP协议有三个组成部分："><a href="#PPP协议有三个组成部分：" class="headerlink" title="PPP协议有三个组成部分："></a>PPP协议有三个组成部分：</h5><ul>
+<h3 id="点对点协议-PPP-Point-to-Point-Protocol"><a href="#点对点协议-PPP-Point-to-Point-Protocol" class="headerlink" title="点对点协议 PPP(Point-to-Point Protocol)"></a>点对点协议 PPP(Point-to-Point Protocol)</h3><p><img src="/2020/05/21/Chapter03/09.png" alt="PPP"><br>PPP协议不需要纠错、流量控制、序号、多点线路、半双工或单工链路.</p>
+<h4 id="PPP协议有三个组成部分："><a href="#PPP协议有三个组成部分：" class="headerlink" title="PPP协议有三个组成部分："></a>PPP协议有三个组成部分：</h4><ul>
 <li>一个将IP数据报封装到串行链路的方法。</li>
 <li><strong>链路控制协议 LCP</strong></li>
 <li><strong>网络控制协议 NCP</strong></li>
 </ul>
-<h5 id="PPP协议的帧格式"><a href="#PPP协议的帧格式" class="headerlink" title="PPP协议的帧格式"></a>PPP协议的帧格式</h5><ul>
+<h4 id="PPP协议的帧格式"><a href="#PPP协议的帧格式" class="headerlink" title="PPP协议的帧格式"></a>PPP协议的帧格式</h4><ul>
 <li>标志字段 F = 0x7E （符号“0x”表示后面的字符是用十六进制表示。十六进制的 7E 的二进制表示是_01111110_）。</li>
 <li>地址字段 A 只置为 0xFF。地址字段实际上并不起作用。</li>
 <li>控制字段 C 通常置为 0x03。 </li>
@@ -353,7 +353,7 @@
 <li>当协议字段为0x0021时，PPP帧的信息字段就是IP数据报。 - 若为 0xC021, 则信息字段是 PPP 链路控制数据。</li>
 <li>若为 0x8021，则表示这是网络控制数据。</li>
 </ul>
-<h5 id="PPP协议的透明传输问题"><a href="#PPP协议的透明传输问题" class="headerlink" title="PPP协议的透明传输问题"></a>PPP协议的透明传输问题</h5><p>当 PPP 用在同步传输链路时，协议规定采用硬件来完成比特填充（和 HDLC 的做法一样）。</p>
+<h4 id="PPP协议的透明传输问题"><a href="#PPP协议的透明传输问题" class="headerlink" title="PPP协议的透明传输问题"></a>PPP协议的透明传输问题</h4><p>当 PPP 用在同步传输链路时，协议规定采用硬件来完成比特填充（和 HDLC 的做法一样）。</p>
 <ul>
 <li>当 PPP 用在<strong>同步传输</strong>时，使用<strong>零比特填充法</strong>:<ul>
 <li>PPP 协议用在 SONET/SDH 链路时，是使用同步传输（一连串的比特连续传送）。这时 PPP 协议采用零比特填充方法来实现透明传输。<blockquote>
@@ -366,33 +366,33 @@
 </ul>
 </li>
 </ul>
-<h5 id="PPP协议的工作状态"><a href="#PPP协议的工作状态" class="headerlink" title="PPP协议的工作状态"></a>PPP协议的工作状态</h5><ul>
+<h4 id="PPP协议的工作状态"><a href="#PPP协议的工作状态" class="headerlink" title="PPP协议的工作状态"></a>PPP协议的工作状态</h4><ul>
 <li>当用户拨号接入 ISP 时，路由器的调制解调器对拨号做出确认，并建立一条物理连接。</li>
 <li>PC 机向路由器发送一系列的 <strong>LCP 分组（封装成多个 PPP帧）。</strong></li>
 <li>这些分组及其响应选择一些 PPP 参数，和进行网络层配置，NCP 给新接入的 PC机分配一个临时的 IP 地址，使 PC 机成为因特网上的一个主机。</li>
 <li>通信完毕时，NCP 释放网络层连接，收回原来分配出去的IP 地址。接着，LCP 释放数据链路层连接。最后释放的是物理层的连接。<br><img src="/2020/05/21/Chapter03/12.png" alt="PPP工作状态"></li>
 </ul>
-<h4 id="数据链路层的两个子层"><a href="#数据链路层的两个子层" class="headerlink" title="数据链路层的两个子层"></a>数据链路层的两个子层</h4><ol>
+<h3 id="数据链路层的两个子层"><a href="#数据链路层的两个子层" class="headerlink" title="数据链路层的两个子层"></a>数据链路层的两个子层</h3><ol>
 <li><strong>逻辑链路控制LLC(Logical Link control)</strong>子层</li>
 <li><strong>媒体接入控制MAC(Medium Access Control)</strong>子层<blockquote>
 <p>与接入到传输媒体有关的内容都放在 MAC子层，而LLC 子层则与传输媒体无关，<em>不管采用何种协议的局域网对LLC 子层来说都是透明的</em><br><img src="/2020/05/21/Chapter03/13.png" alt="PPP子层"><br>很多厂商生产的适配器上就仅装有 MAC 协议而没有 LLC 协议。</p>
 </blockquote>
 </li>
 </ol>
-<h3 id="流量控制与差错控制"><a href="#流量控制与差错控制" class="headerlink" title="流量控制与差错控制"></a>流量控制与差错控制</h3><h4 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h4><pre><code>是一组过程，用来告诉发送方在等待接收方的确认信号之前最多可以传送多少数据</code></pre><p>两个要点：</p>
+<h2 id="流量控制与差错控制"><a href="#流量控制与差错控制" class="headerlink" title="流量控制与差错控制"></a>流量控制与差错控制</h2><h3 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h3><pre><code>是一组过程，用来告诉发送方在等待接收方的确认信号之前最多可以传送多少数据</code></pre><p>两个要点：</p>
 <ul>
 <li>数据流不能使接受方过载</li>
 <li>接收方对数据进行确认<br>两个方法：</li>
 <li>基于反馈的流量控制</li>
 <li>基于速率的流量控制</li>
 </ul>
-<h4 id="差错控制"><a href="#差错控制" class="headerlink" title="差错控制"></a>差错控制</h4><pre><code>差错控制主要指错误检测和重传方法。</code></pre><p><strong>自动重复请求(ARQ)</strong>： <br>数据帧在传输中出现错误，接收方就返回一个否定应答帧(NAK)，出错的帧就会被发送方重新传送。这个过程叫ARQ。</p>
+<h3 id="差错控制"><a href="#差错控制" class="headerlink" title="差错控制"></a>差错控制</h3><pre><code>差错控制主要指错误检测和重传方法。</code></pre><p><strong>自动重复请求(ARQ)</strong>： <br>数据帧在传输中出现错误，接收方就返回一个否定应答帧(NAK)，出错的帧就会被发送方重新传送。这个过程叫ARQ。</p>
 <p>流量控制和差错控制是结合在一起实现的，有两种实现流量控制和差错控制的技术：</p>
 <ul>
 <li>停止等待协议</li>
 <li>滑动窗口协议</li>
 </ul>
-<h4 id="差错检测与纠正"><a href="#差错检测与纠正" class="headerlink" title="差错检测与纠正"></a>差错检测与纠正</h4><p>针对错误有两种基本策略：</p>
+<h3 id="差错检测与纠正"><a href="#差错检测与纠正" class="headerlink" title="差错检测与纠正"></a>差错检测与纠正</h3><p>针对错误有两种基本策略：</p>
 <ul>
 <li>加入冗余信息推断出发送数据（纠错码，前向纠错）</li>
 <li>加入冗余信息推断是否发生错误（检错码）</li>
@@ -409,7 +409,7 @@
 <blockquote>
 <p><strong>检测d个错误需要距离为d+1的编码方案</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;  d个错误不可能将一个合法码字改变成另一个合法码字<br><strong>纠正d个错误需要距离为2d+1的编码方案</strong><br>&nbsp;&nbsp;&nbsp;&nbsp; d个错误结果也还是离原来的码字最近</p>
 </blockquote>
-<h5 id="四种典型纠错码"><a href="#四种典型纠错码" class="headerlink" title="四种典型纠错码"></a>四种典型纠错码</h5><ul>
+<h4 id="四种典型纠错码"><a href="#四种典型纠错码" class="headerlink" title="四种典型纠错码"></a>四种典型纠错码</h4><ul>
 <li><strong>海明码</strong><ul>
 <li>基本原理：2的幂次方位是校验位，其余位是数据位。</li>
 <li>校验位计算：使用强制模2加或奇偶校验</li>
@@ -432,13 +432,13 @@
 </ul>
 </li>
 </ul>
-<h5 id="检错码"><a href="#检错码" class="headerlink" title="检错码"></a>检错码</h5><ul>
+<h4 id="检错码"><a href="#检错码" class="headerlink" title="检错码"></a>检错码</h4><ul>
 <li>奇偶：计算序列中包含一的个数是奇数还是偶数。</li>
 <li>校验和：计算补码，并在校验中使用累加计算。</li>
 <li>循环冗余码(CRC)</li>
 </ul>
-<h3 id="滑动窗口协议"><a href="#滑动窗口协议" class="headerlink" title="滑动窗口协议"></a>滑动窗口协议</h3><h4 id="停止等待协议"><a href="#停止等待协议" class="headerlink" title="停止等待协议"></a>停止等待协议</h4><p>发送方每发送一帧就等待应答。只有收到一个应答(ACK)后才发送下一帧。直到发送方发送一个传输结束帧。<br><img src="/2020/05/21/Chapter03/14.png" alt="停止等待协议"></p>
-<h5 id="时间和利用率"><a href="#时间和利用率" class="headerlink" title="时间和利用率"></a>时间和利用率</h5><p><strong>完成一帧发送所需要的最短时间：</strong><br>WT=t<sub>I</sub>+2t<sub>p</sub>+2t<sub>proc</sub>+t<sub>s</sub></p>
+<h2 id="滑动窗口协议"><a href="#滑动窗口协议" class="headerlink" title="滑动窗口协议"></a>滑动窗口协议</h2><h3 id="停止等待协议"><a href="#停止等待协议" class="headerlink" title="停止等待协议"></a>停止等待协议</h3><p>发送方每发送一帧就等待应答。只有收到一个应答(ACK)后才发送下一帧。直到发送方发送一个传输结束帧。<br><img src="/2020/05/21/Chapter03/14.png" alt="停止等待协议"></p>
+<h4 id="时间和利用率"><a href="#时间和利用率" class="headerlink" title="时间和利用率"></a>时间和利用率</h4><p><strong>完成一帧发送所需要的最短时间：</strong><br>WT=t<sub>I</sub>+2t<sub>p</sub>+2t<sub>proc</sub>+t<sub>s</sub></p>
 <ul>
 <li><p>t<sub>I</sub>：发送数据帧的时间=帧长/数据传输率</p>
 </li>
@@ -462,7 +462,7 @@
 <li><p>极限吞吐量M= 1/ tI</p>
 </li>
 </ul>
-<h5 id="停止等待协议中的差错检验"><a href="#停止等待协议中的差错检验" class="headerlink" title="停止等待协议中的差错检验"></a>停止等待协议中的差错检验</h5><pre><code>ARQ技术：（处理：帧破坏、帧丢失、应答帧丢失）</code></pre><p><img src="/2020/05/21/Chapter03/16.png" alt="停止等待协议中的差错控制"></p>
+<h4 id="停止等待协议中的差错检验"><a href="#停止等待协议中的差错检验" class="headerlink" title="停止等待协议中的差错检验"></a>停止等待协议中的差错检验</h4><pre><code>ARQ技术：（处理：帧破坏、帧丢失、应答帧丢失）</code></pre><p><img src="/2020/05/21/Chapter03/16.png" alt="停止等待协议中的差错控制"></p>
 <ul>
 <li>停止等待协议中的基本要求：<ul>
 <li>发送站要保留数据帧的备份</li>
@@ -472,13 +472,13 @@
 </ul>
 </li>
 </ul>
-<h4 id="滑动窗口协议-1"><a href="#滑动窗口协议-1" class="headerlink" title="滑动窗口协议"></a>滑动窗口协议</h4><h5 id="滑动窗口协议中的流量控制"><a href="#滑动窗口协议中的流量控制" class="headerlink" title="滑动窗口协议中的流量控制"></a>滑动窗口协议中的流量控制</h5><pre><code>窗口是发送方和接受方存放数据帧的缓冲区。类似于一个box。</code></pre><ul>
+<h3 id="滑动窗口协议-1"><a href="#滑动窗口协议-1" class="headerlink" title="滑动窗口协议"></a>滑动窗口协议</h3><h4 id="滑动窗口协议中的流量控制"><a href="#滑动窗口协议中的流量控制" class="headerlink" title="滑动窗口协议中的流量控制"></a>滑动窗口协议中的流量控制</h4><pre><code>窗口是发送方和接受方存放数据帧的缓冲区。类似于一个box。</code></pre><ul>
 <li>发送方在收到应答消息前可以发送若干帧。接收方使用一个ACK帧来对多个数据帧的接收进行确认。具体可以接受多少帧视窗口大小而定</li>
 <li>帧编号：<br> • 在滑动窗口协议中，数据帧以模n方式编号，也就是说，编号从0到n-1。窗口的大小是n-1。<br> • 接收方发送的应答帧(ACK)编号是接收方希望收到的下一帧的编号。</li>
 <li>发送方窗口用于存放已经发送但未收到应答的数据帧和在收到应答帧之前可以发送的数据帧。</li>
 <li>接收方窗口用于存放已经被接收但未给应答的数据帧。只要窗口未填满就可以在未发送应答帧的情况下继续接收数据帧。</li>
 </ul>
-<h5 id="滑动窗口协议中的差错控制"><a href="#滑动窗口协议中的差错控制" class="headerlink" title="滑动窗口协议中的差错控制"></a>滑动窗口协议中的差错控制</h5><pre><code>帧破坏、数据帧丢失、确认帧丢失</code></pre><ul>
+<h4 id="滑动窗口协议中的差错控制"><a href="#滑动窗口协议中的差错控制" class="headerlink" title="滑动窗口协议中的差错控制"></a>滑动窗口协议中的差错控制</h4><pre><code>帧破坏、数据帧丢失、确认帧丢失</code></pre><ul>
 <li>滑动窗口协议中，有两种实现自动重复请求(ARQ)技术: <ul>
 <li>（1）回退N自动重复请求(Go-back-N)：如果一帧丢失或损坏了，从最近一次得到应答的数据帧开始，未被应答的所有帧都进行重传。</li>
 <li>（2）选择拒绝自动重复请求(Select-Rej)</li>
@@ -514,7 +514,7 @@
 </li>
 </ol>
 <p><img src="/2020/05/21/Chapter03/17.png" alt="差错控制"><br><img src="/2020/05/21/Chapter03/18.png" alt="差错控制"><br><img src="/2020/05/21/Chapter03/19.png" alt="差错控制"><br><img src="/2020/05/21/Chapter03/20.png" alt="差错控制"></p>
-<h5 id="窗口大小选择"><a href="#窗口大小选择" class="headerlink" title="窗口大小选择"></a>窗口大小选择</h5><ul>
+<h4 id="窗口大小选择"><a href="#窗口大小选择" class="headerlink" title="窗口大小选择"></a>窗口大小选择</h4><ul>
 <li>窗口如果选得太大，会要求有足够大的缓存空间；</li>
 <li>如果选得太小，由于传播和发送延迟，第一个应答帧返回到发送方之前，发送方发送窗口中的帧已经全部发送出去，但是没有得到应答，发送方必须等待，从而影响了传输速度和传输效率。</li>
 </ul>
@@ -524,7 +524,7 @@
 </blockquote>
 </li>
 </ul>
-<h5 id="回退N的效率"><a href="#回退N的效率" class="headerlink" title="回退N的效率"></a>回退N的效率</h5><ul>
+<h4 id="回退N的效率"><a href="#回退N的效率" class="headerlink" title="回退N的效率"></a>回退N的效率</h4><ul>
 <li><p>正确传送一帧所需的平均时间为：t<sub>v</sub>=t<sub>I</sub>+pt<sub>w</sub>/(1-p)（p为差错率）</p>
 </li>
 <li><p>系统最大吞吐量: λmax=1/ tV=(1-p)/(tI(1+ p(a-1)))</p>
@@ -538,7 +538,7 @@
 </ul>
 </li>
 <li><p>例子<br><img src="/2020/05/21/Chapter03/21.png" alt="看例子"></p>
-<h5 id="3种协议方法总结"><a href="#3种协议方法总结" class="headerlink" title="3种协议方法总结"></a>3种协议方法总结</h5></li>
+<h4 id="3种协议方法总结"><a href="#3种协议方法总结" class="headerlink" title="3种协议方法总结"></a>3种协议方法总结</h4></li>
 <li><p>停止等待协议:<br>  发送窗口=1，接收窗口=1;</p>
 </li>
 <li><p>滑动窗口中的回退N:<br>  发送窗口&gt;1，接收窗口=1;</p>
@@ -546,7 +546,7 @@
 <li><p>滑动窗口中的选择拒绝:<br>  发送窗口&gt;1，接收窗口&gt;1;</p>
 </li>
 </ul>
-<h3 id="HDLC通信协议"><a href="#HDLC通信协议" class="headerlink" title="HDLC通信协议"></a>HDLC通信协议</h3><p><img src="/2020/05/21/Chapter03/22.png" alt><br>HDLC协议为了支持上述配置下的3种通信方式，定义了三种类型的帧：</p>
+<h2 id="HDLC通信协议"><a href="#HDLC通信协议" class="headerlink" title="HDLC通信协议"></a>HDLC通信协议</h2><p><img src="/2020/05/21/Chapter03/22.png" alt><br>HDLC协议为了支持上述配置下的3种通信方式，定义了三种类型的帧：</p>
 <ul>
 <li>信息帧（I-帧）</li>
 <li>监管帧（S-帧）</li>
@@ -590,7 +590,7 @@
 <li>帧校验序列是HDLC协议的错误检测字段。</li>
 <li>它含有一个两字节或一个四字节的循环冗余校验(CRC)码</li>
 </ul>
-<h4 id="监控帧的使用方式"><a href="#监控帧的使用方式" class="headerlink" title="监控帧的使用方式"></a>监控帧的使用方式</h4><p>S-帧尽管没有信息字段，但是每一帧都给接收方带去了某种信息。这些信息的含义需要通过S-帧的类型和传输上下文来获得。共有四类S-帧: </p>
+<h3 id="监控帧的使用方式"><a href="#监控帧的使用方式" class="headerlink" title="监控帧的使用方式"></a>监控帧的使用方式</h3><p>S-帧尽管没有信息字段，但是每一帧都给接收方带去了某种信息。这些信息的含义需要通过S-帧的类型和传输上下文来获得。共有四类S-帧: </p>
 <ol>
 <li>接收就绪(RR)帧：</li>
 </ol>
@@ -624,21 +624,21 @@
 <li>N(R)指明了被损坏帧的编号。</li>
 <li>被损坏的帧需要重发</li>
 </ul>
-<h5 id="无编号帧的种类及意义"><a href="#无编号帧的种类及意义" class="headerlink" title="无编号帧的种类及意义"></a>无编号帧的种类及意义</h5><ul>
+<h4 id="无编号帧的种类及意义"><a href="#无编号帧的种类及意义" class="headerlink" title="无编号帧的种类及意义"></a>无编号帧的种类及意义</h4><ul>
 <li>无编号帧是用来在互连设备之间交换会话管理信息和控制信息的。  </li>
 <li>无编号帧的控制字段中有5位编码位，这5个编码位可用来表示32种不同类型的无编号帧。<br><img src="/2020/05/21/Chapter03/2.jpg" alt></li>
 </ul>
-<h5 id="HDLC协议通信实例"><a href="#HDLC协议通信实例" class="headerlink" title="HDLC协议通信实例"></a>HDLC协议通信实例</h5><ul>
+<h4 id="HDLC协议通信实例"><a href="#HDLC协议通信实例" class="headerlink" title="HDLC协议通信实例"></a>HDLC协议通信实例</h4><ul>
 <li>查询/响应<br><img src="/2020/05/21/Chapter03/25.png" alt="HDLC"></li>
 <li>选择/应答<br><img src="/2020/05/21/Chapter03/26.png" alt="HDLC"></li>
 </ul>
-<h3 id="数据链路层的网络互连"><a href="#数据链路层的网络互连" class="headerlink" title="数据链路层的网络互连"></a>数据链路层的网络互连</h3><ul>
+<h2 id="数据链路层的网络互连"><a href="#数据链路层的网络互连" class="headerlink" title="数据链路层的网络互连"></a>数据链路层的网络互连</h2><ul>
 <li>网桥是数据链路层上的互连设备。从互连网络的结构上看，网桥属于DCE级的端到端的连接；从协议的层次上看，网桥同时作用在OSI的物理层和数据链路层。</li>
 <li>网桥在数据链路层上进行数据帧的存贮和转发。</li>
 <li>网桥常用于局域网的互连。</li>
 <li>网桥具有隔离通信、错误检测、帧格式转换、帧路由等数据链路层功能。</li>
 </ul>
-<h4 id="网桥路由算法"><a href="#网桥路由算法" class="headerlink" title="网桥路由算法"></a>网桥路由算法</h4><ol>
+<h3 id="网桥路由算法"><a href="#网桥路由算法" class="headerlink" title="网桥路由算法"></a>网桥路由算法</h3><ol>
 <li>固定路由</li>
 </ol>
 <ul>
@@ -688,40 +688,32 @@
 <li>例如:假定A发送一个帧给B，并指定一个路由为L1:B5 L3:B4 L4。连接到L1的两个网桥B5和B6都见到了这个帧，但是在路由指示序列中，B5跟随着L1，所以只有B5接收这个帧，然后B5将这个帧转发给L3。</li>
 <li><img src="/2020/05/21/Chapter03/29.png" alt="源路由"></li>
 </ul>
-<h4 id="第二层交换机，及比较"><a href="#第二层交换机，及比较" class="headerlink" title="第二层交换机，及比较"></a>第二层交换机，及比较</h4><p>交换机从某一节点收到一个以太网帧后，立即在其内存中的地址表（端口号－MAC地址）进行查找，以确认该目的MAC的网卡连接在哪一个节点上，然后将该帧转发至该节点 每个端口有自己的带宽，各端口之间并行工作，这就大大提高了网络吞吐量。<br><img src="/2020/05/21/Chapter03/3.jpg" alt><br>比较：</p>
+<h3 id="第二层交换机，及比较"><a href="#第二层交换机，及比较" class="headerlink" title="第二层交换机，及比较"></a>第二层交换机，及比较</h3><p>交换机从某一节点收到一个以太网帧后，立即在其内存中的地址表（端口号－MAC地址）进行查找，以确认该目的MAC的网卡连接在哪一个节点上，然后将该帧转发至该节点 每个端口有自己的带宽，各端口之间并行工作，这就大大提高了网络吞吐量。<br><img src="/2020/05/21/Chapter03/3.jpg" alt><br>比较：</p>
 <ul>
-<li><img src="/2020/05/21/Chapter03/30.png" alt="源路由"><h4 id="两种典型的交换技术"><a href="#两种典型的交换技术" class="headerlink" title="两种典型的交换技术"></a>两种典型的交换技术</h4></li>
+<li><img src="/2020/05/21/Chapter03/30.png" alt="源路由"><h3 id="两种典型的交换技术"><a href="#两种典型的交换技术" class="headerlink" title="两种典型的交换技术"></a>两种典型的交换技术</h3></li>
 </ul>
 <ol>
 <li><strong>直通式（Cut Through</strong>）<br>直通方式的以太网交换机可以理解为在各端口间是纵横交叉的线路矩阵电话交换机。<br>它在输入端口检测到一个数据包时，检查该包的包头，获取包的目的地址，启动内部的动态查找表转换成相应的输出端口，在输入与输出交叉处接通，把数据包直通到相应的端口，实现交换功能</li>
 <li><strong>存储转发（Store &amp;amp； Forward）</strong><br>存储转发方式是计算机网络领域应用最为广泛的方式。它对输入端口的数据包进行检查，在对错误包处理后才取出数据包的目的地址，通过查找表转换成输出端口送出包。</li>
 </ol>
 <ul>
-<li><p>VLAN的划分</p>
-</li>
-<li><p>VLAN的好处主要有三个： </p>
-<ul>
+<li>VLAN的划分</li>
+<li>VLAN的好处主要有三个： <ul>
 <li>端口的分隔。即便在同一个交换机上，处于不同VLAN的端口也是不能通信的。这样一个物理的交换机可以当作多个逻辑的交换机使用。</li>
 <li>网络的安全。不同VLAN不能直接通信，杜绝了广播信息的不安全性。</li>
 <li>灵活的管理。更改用户所属的网络不必换端口和连线，只更改软件配置就可以了。</li>
 </ul>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3></li>
-<li><p>数据链路层的任务是将物理层提供的原始比特流转换成由冋络层使用的帧流.链路层为这样的帧流提供不同程度的可靠性，范围从无连接无确认的服务到可靠的面向连接服务不等.</p>
 </li>
-<li><p>链路层采用的成帧方法各种各样，包括字节计数、字节填充和比特填充。</p>
-</li>
-<li><p>数据链路协议提供了差借控制机制来检测或纠正传输受损的帧，以及重新传输丢失的帧。</p>
-</li>
-<li><p>为了防止快速发送方淹没慢速接收方，数据链路协议还提供了流量控制机制。滑动窗口机制被广泛用来以一种简单方式集成差错控制和流量控制两大机制。当窗口大小为1个数据包时，则协议是停-等式的。</p>
-</li>
-<li><p>纠错和检错码：卷积码和里德所罗门码、低密度校验码广泛用于纠错。检错码包括循环冗余码和检验和。可用于物理层和更高层。</p>
-</li>
-<li><p>ARQ(自动重复请求)机制为上层提供了一个可靠的链路层。停等协议是个特殊的滑动窗口协议，完成双向通信。回退n协议和选择重传协议用于检验，确保信息准确传输。</p>
-</li>
-<li><p>Internet使用PPP作为点到点线路上的主要数据链路协议。PPP协议提供了无连接的无确认服务，使用标志字节区分帧的边界，至于错误检测则采用CRC。该协议通常被用在运载数据包的一系列链路上，包括广域网中的SONET链路和家庭ADSL链路。</p>
-</li>
-<li><p>习题大佬资源：<a href="https://blog.csdn.net/ao__ao/article/details/85197480" target="_blank" rel="noopener">csdn</a></p>
-</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>数据链路层的任务是将物理层提供的原始比特流转换成由冋络层使用的帧流.链路层为这样的帧流提供不同程度的可靠性，范围从无连接无确认的服务到可靠的面向连接服务不等.</li>
+<li>链路层采用的成帧方法各种各样，包括字节计数、字节填充和比特填充。</li>
+<li>数据链路协议提供了差借控制机制来检测或纠正传输受损的帧，以及重新传输丢失的帧。</li>
+<li>为了防止快速发送方淹没慢速接收方，数据链路协议还提供了流量控制机制。滑动窗口机制被广泛用来以一种简单方式集成差错控制和流量控制两大机制。当窗口大小为1个数据包时，则协议是停-等式的。</li>
+<li>纠错和检错码：卷积码和里德所罗门码、低密度校验码广泛用于纠错。检错码包括循环冗余码和检验和。可用于物理层和更高层。</li>
+<li>ARQ(自动重复请求)机制为上层提供了一个可靠的链路层。停等协议是个特殊的滑动窗口协议，完成双向通信。回退n协议和选择重传协议用于检验，确保信息准确传输。</li>
+<li>Internet使用PPP作为点到点线路上的主要数据链路协议。PPP协议提供了无连接的无确认服务，使用标志字节区分帧的边界，至于错误检测则采用CRC。该协议通常被用在运载数据包的一系列链路上，包括广域网中的SONET链路和家庭ADSL链路。</li>
+<li>习题大佬资源：<a href="https://blog.csdn.net/ao__ao/article/details/85197480" target="_blank" rel="noopener">csdn</a></li>
 </ul>
 
     </div>
@@ -824,7 +816,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据链路层基本概念"><span class="nav-number">1.</span> <span class="nav-text">数据链路层基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线路规划"><span class="nav-number">1.1.</span> <span class="nav-text">线路规划</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据链路层的简单模型"><span class="nav-number">1.2.</span> <span class="nav-text">数据链路层的简单模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#主机H1向主机H2发送数据：（红色从层次上看数据的流动，绿色仅从链路层观察帧流动）"><span class="nav-number">1.2.1.</span> <span class="nav-text">主机H1向主机H2发送数据：（红色从层次上看数据的流动，绿色仅从链路层观察帧流动）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据链路和帧："><span class="nav-number">1.2.2.</span> <span class="nav-text">数据链路和帧：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#功能和服务"><span class="nav-number">1.3.</span> <span class="nav-text">功能和服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本数据链路层协议"><span class="nav-number">1.4.</span> <span class="nav-text">基本数据链路层协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#点对点协议-PPP-Point-to-Point-Protocol"><span class="nav-number">1.4.1.</span> <span class="nav-text">点对点协议 PPP(Point-to-Point Protocol)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#PPP协议有三个组成部分："><span class="nav-number">1.4.1.1.</span> <span class="nav-text">PPP协议有三个组成部分：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#PPP协议的帧格式"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">PPP协议的帧格式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#PPP协议的透明传输问题"><span class="nav-number">1.4.1.3.</span> <span class="nav-text">PPP协议的透明传输问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#PPP协议的工作状态"><span class="nav-number">1.4.1.4.</span> <span class="nav-text">PPP协议的工作状态</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据链路层的两个子层"><span class="nav-number">1.4.2.</span> <span class="nav-text">数据链路层的两个子层</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流量控制与差错控制"><span class="nav-number">1.5.</span> <span class="nav-text">流量控制与差错控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#流量控制"><span class="nav-number">1.5.1.</span> <span class="nav-text">流量控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#差错控制"><span class="nav-number">1.5.2.</span> <span class="nav-text">差错控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#差错检测与纠正"><span class="nav-number">1.5.3.</span> <span class="nav-text">差错检测与纠正</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#四种典型纠错码"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">四种典型纠错码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#检错码"><span class="nav-number">1.5.3.2.</span> <span class="nav-text">检错码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#滑动窗口协议"><span class="nav-number">1.6.</span> <span class="nav-text">滑动窗口协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#停止等待协议"><span class="nav-number">1.6.1.</span> <span class="nav-text">停止等待协议</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#时间和利用率"><span class="nav-number">1.6.1.1.</span> <span class="nav-text">时间和利用率</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#停止等待协议中的差错检验"><span class="nav-number">1.6.1.2.</span> <span class="nav-text">停止等待协议中的差错检验</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#滑动窗口协议-1"><span class="nav-number">1.6.2.</span> <span class="nav-text">滑动窗口协议</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#滑动窗口协议中的流量控制"><span class="nav-number">1.6.2.1.</span> <span class="nav-text">滑动窗口协议中的流量控制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#滑动窗口协议中的差错控制"><span class="nav-number">1.6.2.2.</span> <span class="nav-text">滑动窗口协议中的差错控制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#窗口大小选择"><span class="nav-number">1.6.2.3.</span> <span class="nav-text">窗口大小选择</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#回退N的效率"><span class="nav-number">1.6.2.4.</span> <span class="nav-text">回退N的效率</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3种协议方法总结"><span class="nav-number">1.6.2.5.</span> <span class="nav-text">3种协议方法总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HDLC通信协议"><span class="nav-number">1.7.</span> <span class="nav-text">HDLC通信协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#监控帧的使用方式"><span class="nav-number">1.7.1.</span> <span class="nav-text">监控帧的使用方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#无编号帧的种类及意义"><span class="nav-number">1.7.1.1.</span> <span class="nav-text">无编号帧的种类及意义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HDLC协议通信实例"><span class="nav-number">1.7.1.2.</span> <span class="nav-text">HDLC协议通信实例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据链路层的网络互连"><span class="nav-number">1.8.</span> <span class="nav-text">数据链路层的网络互连</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#网桥路由算法"><span class="nav-number">1.8.1.</span> <span class="nav-text">网桥路由算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二层交换机，及比较"><span class="nav-number">1.8.2.</span> <span class="nav-text">第二层交换机，及比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两种典型的交换技术"><span class="nav-number">1.8.3.</span> <span class="nav-text">两种典型的交换技术</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.9.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据链路层基本概念"><span class="nav-number">1.</span> <span class="nav-text">数据链路层基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线路规划"><span class="nav-number">2.</span> <span class="nav-text">线路规划</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据链路层的简单模型"><span class="nav-number">3.</span> <span class="nav-text">数据链路层的简单模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主机H1向主机H2发送数据：（红色从层次上看数据的流动，绿色仅从链路层观察帧流动）"><span class="nav-number">3.1.</span> <span class="nav-text">主机H1向主机H2发送数据：（红色从层次上看数据的流动，绿色仅从链路层观察帧流动）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据链路和帧："><span class="nav-number">3.2.</span> <span class="nav-text">数据链路和帧：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#功能和服务"><span class="nav-number">4.</span> <span class="nav-text">功能和服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本数据链路层协议"><span class="nav-number">5.</span> <span class="nav-text">基本数据链路层协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#点对点协议-PPP-Point-to-Point-Protocol"><span class="nav-number">5.1.</span> <span class="nav-text">点对点协议 PPP(Point-to-Point Protocol)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PPP协议有三个组成部分："><span class="nav-number">5.1.1.</span> <span class="nav-text">PPP协议有三个组成部分：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PPP协议的帧格式"><span class="nav-number">5.1.2.</span> <span class="nav-text">PPP协议的帧格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PPP协议的透明传输问题"><span class="nav-number">5.1.3.</span> <span class="nav-text">PPP协议的透明传输问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PPP协议的工作状态"><span class="nav-number">5.1.4.</span> <span class="nav-text">PPP协议的工作状态</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据链路层的两个子层"><span class="nav-number">5.2.</span> <span class="nav-text">数据链路层的两个子层</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流量控制与差错控制"><span class="nav-number">6.</span> <span class="nav-text">流量控制与差错控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#流量控制"><span class="nav-number">6.1.</span> <span class="nav-text">流量控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#差错控制"><span class="nav-number">6.2.</span> <span class="nav-text">差错控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#差错检测与纠正"><span class="nav-number">6.3.</span> <span class="nav-text">差错检测与纠正</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#四种典型纠错码"><span class="nav-number">6.3.1.</span> <span class="nav-text">四种典型纠错码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#检错码"><span class="nav-number">6.3.2.</span> <span class="nav-text">检错码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#滑动窗口协议"><span class="nav-number">7.</span> <span class="nav-text">滑动窗口协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#停止等待协议"><span class="nav-number">7.1.</span> <span class="nav-text">停止等待协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#时间和利用率"><span class="nav-number">7.1.1.</span> <span class="nav-text">时间和利用率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#停止等待协议中的差错检验"><span class="nav-number">7.1.2.</span> <span class="nav-text">停止等待协议中的差错检验</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#滑动窗口协议-1"><span class="nav-number">7.2.</span> <span class="nav-text">滑动窗口协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#滑动窗口协议中的流量控制"><span class="nav-number">7.2.1.</span> <span class="nav-text">滑动窗口协议中的流量控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#滑动窗口协议中的差错控制"><span class="nav-number">7.2.2.</span> <span class="nav-text">滑动窗口协议中的差错控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#窗口大小选择"><span class="nav-number">7.2.3.</span> <span class="nav-text">窗口大小选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#回退N的效率"><span class="nav-number">7.2.4.</span> <span class="nav-text">回退N的效率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3种协议方法总结"><span class="nav-number">7.2.5.</span> <span class="nav-text">3种协议方法总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HDLC通信协议"><span class="nav-number">8.</span> <span class="nav-text">HDLC通信协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#监控帧的使用方式"><span class="nav-number">8.1.</span> <span class="nav-text">监控帧的使用方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#无编号帧的种类及意义"><span class="nav-number">8.1.1.</span> <span class="nav-text">无编号帧的种类及意义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HDLC协议通信实例"><span class="nav-number">8.1.2.</span> <span class="nav-text">HDLC协议通信实例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据链路层的网络互连"><span class="nav-number">9.</span> <span class="nav-text">数据链路层的网络互连</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#网桥路由算法"><span class="nav-number">9.1.</span> <span class="nav-text">网桥路由算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二层交换机，及比较"><span class="nav-number">9.2.</span> <span class="nav-text">第二层交换机，及比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两种典型的交换技术"><span class="nav-number">9.3.</span> <span class="nav-text">两种典型的交换技术</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">10.</span> <span class="nav-text">总结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
